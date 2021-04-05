@@ -12,17 +12,18 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
+        String delimiter = "---------------------------";
         ApplicationContext context = new AnnotationConfigApplicationContext(FirstConfig.class);
         for (String beanDefinitionName : context.getBeanDefinitionNames()) {
             System.out.println(beanDefinitionName);
         }
-        System.out.println("---------------------------");
+        System.out.println(delimiter);
 
         context = new AnnotationConfigApplicationContext(SecondConfig.class);
         for (String beanDefinitionName : context.getBeanDefinitionNames()) {
             System.out.println(beanDefinitionName);
         }
-        System.out.println("---------------------------");
+        System.out.println(delimiter);
 
         context = new AnnotationConfigApplicationContext(ThirdConfig.class);
         AutowiredBeanA autowiredBeanA = context.getBean(AutowiredBeanA.class);
@@ -31,7 +32,7 @@ public class Main {
         System.out.println(autowiredBeanB);
         AutowiredBeanC autowiredBeanC = context.getBean(AutowiredBeanC.class);
         System.out.println(autowiredBeanC);
-        System.out.println("---------------------------");
+        System.out.println(delimiter);
 
         context = new AnnotationConfigApplicationContext(InterfaceConfig.class);
         AnimalContainerBean animalContainerBean = context.getBean(AnimalContainerBean.class);
