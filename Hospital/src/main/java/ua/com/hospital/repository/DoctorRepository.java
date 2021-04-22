@@ -2,13 +2,8 @@ package ua.com.hospital.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ua.com.hospital.model.Account;
-
-import java.util.List;
+import ua.com.hospital.model.Doctor;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
-
-    
-
+public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 }

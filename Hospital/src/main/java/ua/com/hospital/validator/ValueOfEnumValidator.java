@@ -1,7 +1,5 @@
 package ua.com.hospital.validator;
 
-import ua.com.hospital.model.Role;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
