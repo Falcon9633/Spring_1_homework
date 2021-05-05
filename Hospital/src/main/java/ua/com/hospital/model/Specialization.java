@@ -2,6 +2,7 @@ package ua.com.hospital.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,5 +17,6 @@ public class Specialization {
     @Column(unique = true)
     private String name;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "specialization")
+    @ToString.Exclude
     private List<Doctor> doctors;
 }

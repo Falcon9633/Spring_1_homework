@@ -20,7 +20,6 @@ public class SpecializationServiceImpl implements SpecializationService {
 
     @Override
     public SpecializationDto createSpecialization(SpecializationDto specializationDto) {
-        log.info("creating specialization -> {}", specializationDto);
         Specialization specialization = specializationDtoMapper.mapDtoToSpec(specializationDto);
         specialization = specializationRepository.save(specialization);
         return specializationDtoMapper.mapSpecToDto(specialization);
@@ -28,7 +27,6 @@ public class SpecializationServiceImpl implements SpecializationService {
 
     @Override
     public SpecializationDto getSpecialization(Long id) {
-        log.info("getting specialization by id -> {}", id);
         Specialization specialization = specializationRepository.findById(id)
                 .orElseThrow(SpecializationNotFoundException::new);
         log.info("found specialization -> {}", specialization);
@@ -37,7 +35,6 @@ public class SpecializationServiceImpl implements SpecializationService {
 
     @Override
     public SpecializationDto updateSpecialization(Long id, SpecializationDto specializationDto) {
-        log.info("updating specialization by id -> {}", id);
         Specialization specFromDB = specializationRepository.findById(id).orElseThrow(SpecializationNotFoundException::new);
         log.debug("found specialization -> {}", specFromDB);
         specializationDtoMapper.updateSpecializationFromDto(specializationDto, specFromDB);

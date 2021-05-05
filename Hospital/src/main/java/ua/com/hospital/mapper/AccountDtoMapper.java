@@ -1,7 +1,6 @@
 package ua.com.hospital.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 import ua.com.hospital.dto.AccountDto;
 import ua.com.hospital.model.Account;
 import ua.com.hospital.model.AccountDetails;
@@ -29,4 +28,10 @@ public interface AccountDtoMapper {
 
     @Mapping(target = "birthday", dateFormat = "yyyy-mm-dd")
     Patient mapDtoToPatient(AccountDto accountDto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateAccountFromDto(AccountDto accountDto, @MappingTarget Account account);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateAccountDetailsFromDto(AccountDto accountDto, @MappingTarget AccountDetails accountDetails);
 }

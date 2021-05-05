@@ -13,5 +13,6 @@ public interface AccountService {
 
     List<AccountDto> getAllAccounts();
 
+    @Transactional
     AccountDto updateAccount(Long id, AccountDto accountDto);
 }

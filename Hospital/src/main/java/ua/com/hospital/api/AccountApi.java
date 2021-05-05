@@ -15,7 +15,7 @@ import java.util.List;
 @Api("Account management API")
 @RequestMapping("/api/v1/accounts")
 @Validated
-public interface AccountAPI {
+public interface AccountApi {
     @ApiOperation("create account")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -34,5 +34,5 @@ public interface AccountAPI {
     @ApiOperation("update account")
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    AccountDto updateAccount(@PathVariable @Min(1) Long id, @Valid @RequestBody AccountDto accountDto);
+    AccountModel updateAccount(@PathVariable @Min(1) Long id, @Valid @RequestBody AccountDto accountDto);
 }

@@ -2,6 +2,7 @@ package ua.com.hospital.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,11 +12,11 @@ import javax.persistence.*;
 public class AccountDetails {
     @Id
     private Long id;
-    @Column(nullable = false)
     private String name;
     private String surname;
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "id")
+    @ToString.Exclude
     private Account account;
 }
