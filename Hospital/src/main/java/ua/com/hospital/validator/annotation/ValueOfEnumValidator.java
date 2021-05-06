@@ -1,4 +1,4 @@
-package ua.com.hospital.validator;
+package ua.com.hospital.validator.annotation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

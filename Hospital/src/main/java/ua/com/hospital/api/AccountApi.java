@@ -7,6 +7,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ua.com.hospital.controller.model.AccountModel;
 import ua.com.hospital.dto.AccountDto;
+import ua.com.hospital.validator.OnPatch;
+import ua.com.hospital.validator.OnPost;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -19,6 +21,7 @@ public interface AccountApi {
     @ApiOperation("create account")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Validated(OnPost.class)
     AccountModel createAccount(@Valid @RequestBody AccountDto accountDto);
 
     @ApiOperation("get account")
@@ -34,5 +37,6 @@ public interface AccountApi {
     @ApiOperation("update account")
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @Validated(OnPatch.class)
     AccountModel updateAccount(@PathVariable @Min(1) Long id, @Valid @RequestBody AccountDto accountDto);
 }

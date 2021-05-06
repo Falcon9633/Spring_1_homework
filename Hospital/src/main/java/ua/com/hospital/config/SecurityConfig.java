@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         builder.inMemoryAuthentication()
                 .withUser("admin")
                 .password(passwordEncoder().encode("1"))
-                .authorities("ROLE_ADMIN");
+                .authorities("ADMIN");
         builder.authenticationProvider(provider);
     }
 

@@ -1,4 +1,4 @@
-package ua.com.hospital.validator;
+package ua.com.hospital.validator.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -6,18 +6,21 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({TYPE, ANNOTATION_TYPE})
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PasswordMatchesValidator.class)
+@Constraint(validatedBy = ValueOfEnumValidator.class)
 @Documented
-public @interface PasswordMatches {
-    String message() default "Passwords do not match";
+public @interface ValueOfEnum {
+    Class<? extends Enum<?>> enumClass();
+
+    String message() default "must be any of enum {enumClass}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 }
+
+

@@ -73,8 +73,6 @@ public class ErrorHandlingController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Error handleException(Exception ex) {
         log.error("handleException: message -> {}", ex.getMessage());
-        System.out.println(ex.getClass());
-        ex.printStackTrace();
         return new Error(ex.getMessage(), ErrorType.FATAL_ERROR_TYPE, LocalDateTime.now());
     }
 }
